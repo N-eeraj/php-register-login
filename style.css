@@ -1,0 +1,29 @@
+.bg-light{
+    margin: 25vh auto;
+    padding: 10% 3%;
+}
+
+.my-alert{
+    padding: 3%;
+}
+
+.justify-content-around{
+    margin-top: 10%;
+}
+
+@media screen and (orientation: landscape)
+{
+    .bg-light{
+        margin: 5vh auto;
+        padding: 5% 1%;
+    }
+    
+}
+
+@media screen and (orientation: landscape) and (min-width: 1024px)
+{
+    .bg-light{
+        margin: 10vh auto;
+        padding: 5% 3%;
+    }
+}
