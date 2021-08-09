@@ -1,5 +1,12 @@
+/* for smooth transitions */
+*{
+    transition: 500ms;
+}
+
+/* small-screen */
 .bg-light{
-    margin: 25vh auto;
+    margin: auto;
+    margin-top: 25vh;
     padding: 10% 3%;
 }
 
@@ -11,19 +18,21 @@
     margin-top: 10%;
 }
 
+/* medium screen landscape */
 @media screen and (orientation: landscape)
 {
     .bg-light{
-        margin: 5vh auto;
-        padding: 5% 1%;
+        margin-top: 10vh;
+        padding: 5%;
     }
     
 }
 
+/* large screen landscape */
 @media screen and (orientation: landscape) and (min-width: 1024px)
 {
     .bg-light{
-        margin: 10vh auto;
+        margin-top: 18vh;
         padding: 5% 3%;
     }
 }

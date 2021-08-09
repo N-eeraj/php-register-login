@@ -4,20 +4,25 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        // accessing user input
         $uname = trim($_POST["uname"]);
         $pswd = $_POST["pswd"];
 
+        // db connection & run query
         $conn = new mysqli("localhost", "root", "", "test");
         $sql = "SELECT password FROM `phplogin` where username = '$uname'";
         $result = $conn->query($sql);
         $record = $result->fetch_row();
 
+        // validation & login
         if(empty($uname))
             $status = "<p class='my-alert alert-danger'>Username can't be empty</p>";
         else if(empty($record[0]))
-        $status = "<p class='my-alert alert-danger'>User not found</p>";
+            $status = "<p class='my-alert alert-danger'>User not found</p>";
         else
-            $status = $record[0] == $pswd? "<p class='my-alert alert-success'>Login Success</p>": "<p class='my-alert alert-danger'>Wrong Password</p>";
+            $status = $record[0] == $pswd? 
+            "<p class='my-alert alert-success'>Login Success</p>": 
+            "<p class='my-alert alert-danger'>Wrong Password</p>";
     }
 
 ?>

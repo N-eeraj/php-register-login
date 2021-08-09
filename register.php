@@ -4,10 +4,12 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        // accessing user input
         $uname = trim($_POST["uname"]);
         $pswd1 = trim($_POST["pswd1"]);
         $pswd2 = trim($_POST["pswd2"]);
 
+        // validations
         if(empty($uname))
             $status = "<p class='my-alert alert-danger'>Username can't be empty</p>";
         else if(strlen($pswd1) < 8)
@@ -17,14 +19,17 @@
 
         else
         {
+            // db connection & run query
             $conn = new mysqli("localhost", "root", "", "test");
             $sql = "SELECT username from `phplogin` WHERE username = '$uname'";
             $result = $conn->query($sql);
             $record = $result->fetch_row();
 
+            // checks existing username
             if(!empty($record[0]))
                 $status = "<p class='my-alert alert-danger'>Username is already taken</p>";
 
+            // insert new user to db
             else
             {
                 $sql = "INSERT INTO `phplogin` VALUES('$uname', '$pswd1')";
